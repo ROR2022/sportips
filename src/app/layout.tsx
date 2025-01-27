@@ -27,7 +27,7 @@ async function RootLayout({ children }: { children: React.ReactNode }) {
         <ThemeProvider attribute="class" defaultTheme="dark">
           <NextIntlClientProvider messages={messages} locale={locale}>
             <Navbar />
-            <div style={{ height: "80vh" }}>
+            <div style={{ minHeight: "80vh" }}>
             {children}
             </div>
             <Footer />

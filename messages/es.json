@@ -2,7 +2,7 @@
   "Navbar": {
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
-    "dashboard": "Tablero"
+    "dashboard": "Consejero"
   },
   "Footer": {
     "rights": "Todos los derechos reservados.",
@@ -16,7 +16,16 @@
     "cancel": "Cancelar"
   },
     "HomePage": {
-      "title": "SporTips es una aplicación web que te permite consultar probabilidades deportivas basandose en estadisticas y registros confiables."
+      "title": "Encuentra Respuestas, Encuentra Paz",
+      "subTitle": "LiveCoaching: Tu consejero de vida personal. Sabiduría práctica y orientación para las preguntas más profundas de tu vida.",
+      "button1": "Habla con tu consejero ahora",
+      "section1": "¿Te sientes perdido o necesitas claridad?",
+      "description1": "En un mundo lleno de ruido, encontrar dirección puede ser abrumador. LiveCoaching es tu compañero confiable, combinando tecnología avanzada con empatía humana para brindarte la orientación que necesitas.",
+      "section2": "¿Por qué LiveCoaching es único?",
+      "description2": "",
+      "section3": "Empieza tu camino hacia la claridad hoy mismo",
+      "description3": "",
+      "lang": "es"
     },
     "Login": {
       "title": "Iniciar sesión",
@@ -56,11 +65,22 @@
       "button": "Restablecer"
     },
     "Dashboard": {
-      "title": "Tablero",
-      "description": "SporTips es una aplicación web que te permite consultar probabilidades deportivas basandose en estadisticas y registros confiables.",
-      "statistics": "Estadísticas",
-      "predictions": "Predicciones",
-      "settings": "Configuraciones",
-      "search": "Buscar"
+      "title": "¡Estoy aquí para ayudar!",
+      "description": "LiveCoaching tu consejero de vida que proporciona sabiduría y orientación a las personas que buscan respuestas a sus preguntas más profundas.",
+      "search": "Buscar",
+      "sugested": "Sugerido:",
+      "free": "Pregúntame cualquier cosa",
+      "myLang": "es",
+      "response": "Respuesta"
+    },
+    "Privacy": {
+      "title": "Política de privacidad",
+      "description": "Tu privacidad es importante para nosotros. Es política de LiveCoaching respetar tu privacidad con respecto a cualquier información que podamos recopilar de ti a través de nuestro sitio web.",
+      "lang": "es"
+    },
+    "Terms": {
+      "title": "Términos de servicio",
+      "description": "Estos términos de servicio describen las reglas y regulaciones para el uso del sitio web de LiveCoaching, ubicado en livecoaching.com.",
+      "lang": "es"
     }
   }

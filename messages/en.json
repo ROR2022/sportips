@@ -2,7 +2,7 @@
   "Navbar":{
     "login": "Login",
     "logout": "Logout",
-    "dashboard": "Dashboard"
+    "dashboard": "Counselor"
   },
   "Footer": {
     "rights": "All rights reserved.",
@@ -16,7 +16,16 @@
     "cancel": "Cancel"
   },
   "HomePage": {
-    "title": "SporTips is a web application that allows you to consult sports probabilities based on reliable statistics and records."
+    "title": "Find Answers, Find Peace",
+    "subTitle": "LiveCoaching: Your personal life counselor. Practical wisdom and guidance for life's deepest questions.",
+    "button1": "Talk to your counselor now",
+    "section1": "Feeling lost or need clarity?",
+    "description1": "In a world full of noise, finding direction can be overwhelming. LiveCoaching is your trusted companion, combining advanced technology with human empathy to provide you with the guidance you need.",
+    "section2": "Why LiveCoaching is unique?",
+    "description2": "",
+    "section3": "Start your journey to clarity today",
+    "description3": "",
+    "lang": "en"
   },
   "Login": {
     "title": "Login",
@@ -56,11 +65,22 @@
     "button": "Reset"
   },
   "Dashboard": {
-    "title": "Dashboard",
-    "description": "SporTips is a web application that allows you to consult sports probabilities based on reliable statistics and records.",
-    "statistics": "Statistics",
-    "predictions": "Predictions",
-    "settings": "Settings",
-    "search": "Search"
+    "title": "I'm here to help!",
+    "description": "LiveCoaching your life coach that provides wisdom and guidance to people seeking answers to their deepest questions.",
+    "search": "Search",
+    "sugested": "Suggested:",
+    "free": "Ask me anything",
+    "myLang": "en",
+    "response": "Response"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "description": "This is the privacy policy page.",
+    "lang": "en"
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "description": "This is the terms of service page.",
+    "lang": "en"
   }
 }

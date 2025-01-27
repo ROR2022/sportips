@@ -1,7 +1,7 @@
 export const MAIN_APP_LOGO = "/images/logoInnovare.png";
-export const MAIN_APP_NAME = "SporTips";
-export const MAIN_APP_NAME_SHORT = "ST";
-export const MAIN_APP_DESCRIPTION = "SporTips es una aplicación web que te permite consultar probabilidades deportivas basandose en estadisticas y registros confiables.";
+export const MAIN_APP_NAME = "LiveCoaching";
+export const MAIN_APP_NAME_SHORT = "LC";
+export const MAIN_APP_DESCRIPTION = "LiveCoaching tu consejero de vida que proporciona sabiduría y orientación a las personas que buscan respuestas a sus preguntas más profundas.";
 
 
 export const mainLinks= {
