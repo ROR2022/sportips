@@ -1,0 +1,66 @@
+{
+  "Navbar":{
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "Logout": {
+    "title": "Logout",
+    "description": "Are you sure you want to logout?",
+    "accept": "Logout",
+    "cancel": "Cancel"
+  },
+  "HomePage": {
+    "title": "SporTips is a web application that allows you to consult sports probabilities based on reliable statistics and records."
+  },
+  "Login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "notRegistered": "Not registered yet?"
+  },
+  "Register": {
+    "title": "Register",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "alreadyRegistered": "Already registered?"
+  },
+  "Activation": {
+    "title": "Activation",
+    "description": "Please type your Activation Code that was sent to your email:",
+    "successMsg": "Welcome you are active !!!",
+    "errorMsg": "Sorry Mismatch code",
+    "button": "Activate"
+  },
+  "Forgot": {
+    "title": "Forgot Password",
+    "description": "Please type your email to send you a reset password code:",
+    "placeholder": "Email",
+    "button": "Send"
+  },
+  "Recovery": {
+    "title": "Reset Password",
+    "description": "Please type your recovery code and new password:",
+    "email": "Email",
+    "code": "Code",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "button": "Reset"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "description": "SporTips is a web application that allows you to consult sports probabilities based on reliable statistics and records.",
+    "statistics": "Statistics",
+    "predictions": "Predictions",
+    "settings": "Settings",
+    "search": "Search"
+  }
+}

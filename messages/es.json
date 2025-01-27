@@ -1,0 +1,66 @@
+{
+  "Navbar": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "dashboard": "Tablero"
+  },
+  "Footer": {
+    "rights": "Todos los derechos reservados.",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio"
+  },
+  "Logout": {
+    "title": "Cerrar sesión",
+    "description": "¿Estás seguro de que deseas cerrar sesión?",
+    "accept": "Cerrar sesión",
+    "cancel": "Cancelar"
+  },
+    "HomePage": {
+      "title": "SporTips es una aplicación web que te permite consultar probabilidades deportivas basandose en estadisticas y registros confiables."
+    },
+    "Login": {
+      "title": "Iniciar sesión",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "notRegistered": "¿Aún no estás registrado?"
+    },
+    "Register": {
+      "title": "Registro",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "alreadyRegistered": "¿Ya estás registrado?"
+    },
+    "Activation": {
+      "title": "Activación",
+      "description": "Por favor, escribe tu Código de Activación que fue enviado a tu correo electrónico:",
+      "successMsg": "¡Bienvenido, estás activo!",
+      "errorMsg": "Lo siento, código incorrecto",
+      "button": "Activar"
+    },
+    "Forgot": {
+      "title": "Olvidé mi contraseña",
+      "description": "Por favor, escribe tu correo electrónico para enviarte un código de restablecimiento de contraseña:",
+      "placeholder": "Correo electrónico",
+      "button": "Enviar"
+    },
+    "Recovery": {
+      "title": "Restablecer contraseña",
+      "description": "Por favor, escribe tu código de recuperación y nueva contraseña:",
+      "email": "Correo electrónico",
+      "code": "Código",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "button": "Restablecer"
+    },
+    "Dashboard": {
+      "title": "Tablero",
+      "description": "SporTips es una aplicación web que te permite consultar probabilidades deportivas basandose en estadisticas y registros confiables.",
+      "statistics": "Estadísticas",
+      "predictions": "Predicciones",
+      "settings": "Configuraciones",
+      "search": "Buscar"
+    }
+  }
