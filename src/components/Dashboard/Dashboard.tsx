@@ -59,7 +59,7 @@ const Dashboard = () => {
         const stringMsg = data?.message;
         const listMsgsTemp = stringMsg.split("\n");
         setListMsgs(listMsgsTemp);
-        setResponseChat(data?.message);
+        
       }
       setLoading(false);
     } catch (error) {
@@ -74,7 +74,7 @@ const Dashboard = () => {
 
   const handleClear = () => {
     setMessage("");
-    setResponseChat("");
+    
     setListMsgs([]);
   };
 
