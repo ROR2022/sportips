@@ -21,7 +21,7 @@ const listQuestionsEN = [
 const Dashboard = () => {
   const t = useTranslations("Dashboard");
   const [message, setMessage] = useState<string>("");
-  const [responseChat, setResponseChat] = useState<string>("");
+  
   const [loading, setLoading] = useState<boolean>(false);
   const [langSelected, setLangSelected] = useState<string>(t("myLang"));
   const [listQuestions, setListQuestions] = useState(listQuestionsES);
