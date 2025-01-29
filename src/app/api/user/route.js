@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { sendConfimCodeMailer } from "@/services/libMailer";
 import { generateRandomCode } from "@/services/libAux";
-import { uploadImage } from "../../../services/cloudinary";
+//import { uploadImage } from "../../../services/cloudinary";
 
 
 // GET: Obtener todos los usuarios o un usuario por email
