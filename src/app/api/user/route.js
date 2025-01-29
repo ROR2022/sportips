@@ -5,6 +5,8 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { sendConfimCodeMailer } from "@/services/libMailer";
 import { generateRandomCode } from "@/services/libAux";
+import { uploadImage } from "../../../services/cloudinary";
+
 
 // GET: Obtener todos los usuarios o un usuario por email
 export async function GET(req) {
@@ -53,9 +55,14 @@ export async function POST(req) {
 export async function PUT(req) {
   try {
     await dbConnect();
-    const { _id, ...data } = await req.json();
-    const user = await User.findByIdAndUpdate(_id, data, { new: true });
+    const dataTemp = await req.json();
+    console.log('dataTemp: ',dataTemp);
+    const { _id, ...restData } = dataTemp;
+    
+
+    const user = await User.findByIdAndUpdate(_id, restData, { new: true });
     return NextResponse.json(user, { status: 200 });
+    //return NextResponse.json({ message: "User updated" }, { status: 200 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Failed to update user" }, { status: 500 });

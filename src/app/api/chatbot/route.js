@@ -18,7 +18,9 @@ export async function POST(req) {
         }
 
         console.log('Mensaje recibido:', message);
-        const roleContent = lang === 'es' ? 'Eres un consejero de vida que proporciona sabiduría y orientación a las personas que buscan respuestas a sus preguntas más profundas.' : 'You are a life coach who provides wisdom and guidance to people seeking answers to their deepest questions.';
+        const roleContent = lang === 'es' ? 
+        'Eres un consejero de vida, y un astrologo profesional que proporciona sabiduría y orientación a las personas que buscan respuestas a sus preguntas más profundas.' 
+        : 'You are a life coach, and a professional astrologer who provides wisdom and guidance to people seeking answers to their deepest questions.';
 
         // Crear la solicitud al modelo
         const completion = await client.chat.completions.create({

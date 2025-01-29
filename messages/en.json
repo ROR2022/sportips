@@ -2,7 +2,8 @@
   "Navbar":{
     "login": "Login",
     "logout": "Logout",
-    "dashboard": "Counselor"
+    "dashboard": "Counselor",
+    "profile": "Profile"
   },
   "Footer": {
     "rights": "All rights reserved.",
@@ -82,5 +83,20 @@
     "title": "Terms of Service",
     "description": "This is the terms of service page.",
     "lang": "en"
+  },
+  "Profile": {
+    "title": "Profile",
+    "description": "We suggest you complete your profile so we can share your birth chart with you.",
+    "lang": "en",
+    "name": "Name",
+    "email": "Email",
+    "currentImage": "Current Image",
+    "selectImage": "Select New Image",
+    "noImage": "No image selected",
+    "button": "Save Changes",
+    "birthDate": "Birth Date",
+    "selectBirthDate": "Select Birth Date",
+    "successMsg": "Profile updated successfully",
+    "errorMsg": "Error updating profile"
   }
 }

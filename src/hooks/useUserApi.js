@@ -50,6 +50,15 @@ export const getUsers = async () => {
     });
     return res.json();
   };
+
+  // Update user data with form data (image)
+  export const updateUserFormData = async (data) => {
+    const res = await fetch("/api/user/form", {
+      method: "PUT",
+      body: data,
+    });
+    return res.json();
+  };
   
   export const deleteUser = async (id) => {
     const res = await fetch("/api/user", {

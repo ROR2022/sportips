@@ -11,8 +11,8 @@ import Footer from "@/components/Footer/Footer";
 
 
 export const metadata: Metadata = {
-  title: "First App Innovare",
-  description: "First App Innovare",
+  title: "LiveCoaching App",
+  description: "LiveCoaching App",
 };
 
 async function RootLayout({ children }: { children: React.ReactNode }) {

@@ -27,6 +27,8 @@ export interface IDataUser {
   active: boolean;
   role: string;
   token?: string;
+  imageUrl?: string;
+  birthDate?: Date;
 }
 
 interface IMessage {

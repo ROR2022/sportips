@@ -30,6 +30,13 @@ const UserSchema = new mongoose.Schema(
     activationCode: {
       type: Number,
     },
+    imageUrl: {
+      type: String,
+      default: "/images/default-profile.png",
+    },
+    birthDate: {
+      type: Date,
+    },
   },
   { timestamps: true }
 );

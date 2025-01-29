@@ -2,7 +2,8 @@
   "Navbar": {
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
-    "dashboard": "Consejero"
+    "dashboard": "Consejero",
+    "profile": "Perfil"
   },
   "Footer": {
     "rights": "Todos los derechos reservados.",
@@ -82,5 +83,20 @@
       "title": "Términos de servicio",
       "description": "Estos términos de servicio describen las reglas y regulaciones para el uso del sitio web de LiveCoaching, ubicado en livecoaching.com.",
       "lang": "es"
+    },
+    "Profile": {
+      "title": "Perfil",
+      "lang": "es",
+      "description": "Te sugerimos que completes tu perfil para que podamos compartirte tu carta astral.",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "currentImage": "Imagen actual",
+      "selectImage": "Seleccionar Nueva imagen",
+      "noImage": "Sin imagen",
+      "button": "Guardar cambios",
+      "birthDate": "Fecha de nacimiento",
+      "selectBirthDate": "Seleccionar fecha de nacimiento",
+      "successMsg": "¡Perfil actualizado con éxito!",
+      "errorMsg": "Lo siento, algo salió mal. Por favor, inténtalo de nuevo."
     }
   }

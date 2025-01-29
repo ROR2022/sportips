@@ -9,12 +9,16 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '"img.daisyui.com"',
-        port: '',
+        protocol: 'http',
+        hostname: 'res.cloudinary.com',
         pathname: '/**',
-        search: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.daisyui.com',
+        pathname: '/**',
+      }
+      
     ],
   },
 };
