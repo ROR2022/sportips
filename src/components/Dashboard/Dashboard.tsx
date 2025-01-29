@@ -88,12 +88,17 @@ const Dashboard = () => {
             : `${query} my birthdate is: ${myBirthdate}`;
       }
 
+      //necesito calcular el tiempo de respuesta
+
+      console.time("fetch chatbot: ");
+
       const response = await fetch(`/api/chatbot`, {
         method: "POST",
         body: JSON.stringify({ message: finalQuery, lang: langSelected }),
         headers: { "Content-Type": "application/json" },
       });
 
+      console.timeEnd("fetch chatbot: ");
       
       
       const data = await response.json();

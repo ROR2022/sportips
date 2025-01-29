@@ -30,7 +30,7 @@ export async function POST(req) {
         // Crear la solicitud al modelo
         const completion = await client.chat.completions.create({
             model: 'gpt-4', 
-            max_tokens: 500,
+            max_tokens: 100,
             messages: [
                 {
                     role: 'system',
