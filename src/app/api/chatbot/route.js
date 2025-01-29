@@ -7,6 +7,11 @@ const client = new OpenAI({
   apiKey: OPENAI_API_KEY,
 });
 
+export const config = {
+    runtime: "edge",
+    maxDuration: 200
+  };
+
 export async function POST(req) {
     try {
         const data = await req.json();
@@ -35,6 +40,8 @@ export async function POST(req) {
             ],
         });
 
+        
+        
         
         console.log('Respuesta del modelo:', completion.choices[0].message.content);
         return NextResponse.json({ message: completion.choices[0].message.content }, { status: 200 });

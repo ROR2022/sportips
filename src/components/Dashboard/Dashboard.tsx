@@ -93,12 +93,16 @@ const Dashboard = () => {
         body: JSON.stringify({ message: finalQuery, lang: langSelected }),
         headers: { "Content-Type": "application/json" },
       });
+
+      
+      
       const data = await response.json();
       if (data?.message) {
         const stringMsg = data?.message;
         const listMsgsTemp = stringMsg.split("\n");
         setListMsgs(listMsgsTemp);
       }
+        
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -172,7 +176,7 @@ const Dashboard = () => {
       <div className="space-y-4">
         {listQuestions.map((item) => (
           <div key={item.id} className="w-full">
-            <div className="collapse collapse-arrow bg-base-200 rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300">
+            <div className="collapse collapse-arrow bg-base-600 rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300">
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title text-xl font-medium text-white">
                 {item.question}
