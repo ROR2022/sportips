@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useLocalStorage } from "usehooks-ts";
 import { useMediaQuery } from "usehooks-ts";
-import { IoMdClose, IoMdSearch } from "react-icons/io";
+import { IoMdClose, IoMdSearch, IoMdMic, IoMdMicOff, IoMdVolumeHigh, IoMdVolumeOff } from "react-icons/io";
 import { generateUniqueId } from "@/services/libAux";
 import FunnyImages from "./FunnyImages";
 import { IDataUser } from "../Activation/Activation";
@@ -38,6 +38,8 @@ const Dashboard = () => {
     null
   );
   const [loading, setLoading] = useState<boolean>(false);
+  const [isListening, setIsListening] = useState<boolean>(false);
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
   const [langSelected, setLangSelected] = useState<string>(t("myLang"));
   const [listQuestions, setListQuestions] = useState(listQuestionsES);
   const [listMsgs, setListMsgs] = useState<string[]>([]);
@@ -45,6 +47,9 @@ const Dashboard = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   useEffect(() => {
+    if (!("webkitSpeechRecognition" in window || "SpeechRecognition" in window)) {
+      console.warn("Speech Recognition API not supported in this browser.");
+    }
     if(typeof window !== "undefined"){
       setIsMounted(true);
     }
@@ -53,6 +58,8 @@ const Dashboard = () => {
       setIsMounted(false);
     };
   }, []);
+
+  
 
   useEffect(() => {}, [dataLocalUser]);
 
@@ -115,6 +122,74 @@ const Dashboard = () => {
     }
   };
 
+  const handleVoiceSearch = () => {
+    if (!("webkitSpeechRecognition" in window || "SpeechRecognition" in window)) {
+      alert("Tu navegador no soporta la búsqueda por voz.");
+      return;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const myWindow: any = window;
+
+    const SpeechRecognition =
+      myWindow.SpeechRecognition || myWindow.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = "es-ES";
+    recognition.interimResults = false;
+    recognition.continuous = false;
+
+    recognition.onstart = () => setIsListening(true);
+    recognition.onend = () => setIsListening(false);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    recognition.onerror = (event:any) => console.log("Error en reconocimiento:", event);
+    
+    //eslint-disable-next-line @typescript-eslint/no-explicit-any
+    recognition.onresult = (event:any) => {
+      const transcript = event.results[0][0].transcript;
+      setMessage(transcript);
+      handleSearch(transcript);
+    };
+
+    recognition.start();
+  };
+
+  const handleReadAloud = () => {
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    const textToRead = listMsgs.join(". ");
+    if (!textToRead) return;
+
+    console.log("textToRead: ", textToRead);
+    // Dividir el texto en fragmentos de hasta 200 caracteres (evita cortes en palabras)
+  const chunks = textToRead.match(/.{1,200}(\s|$)/g) || [];
+
+  let index = 0;
+  const speakChunk = () => {
+    if (index >= chunks.length) {
+      setIsSpeaking(false);
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(chunks[index]);
+    utterance.lang = langSelected === "es" ? "es-ES" : "en-US";
+    utterance.rate = 1;
+    utterance.onend = () => {
+      index++;
+      speakChunk(); // Llama al siguiente fragmento cuando termine de leer
+    };
+
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  speakChunk(); // Iniciar lectura en partes
+  };
+
+
   const changeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
   };
@@ -163,6 +238,12 @@ const Dashboard = () => {
               ) : (
                 <IoMdSearch />
               )}
+            </button>
+            <button
+              className="bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700"
+              onClick={handleVoiceSearch}
+            >
+              {isListening ? <IoMdMicOff /> : <IoMdMic />}
             </button>
             <button
               className="bg-red-600 text-white py-3 px-6 rounded-lg transition-all duration-300 hover:bg-red-700"
@@ -215,9 +296,14 @@ const Dashboard = () => {
         <div className="my-8 w-full max-w-lg mx-auto p-6 rounded-lg shadow-lg bg-base-100">
           <div className="card bg-base-100 w-full shadow-xl">
             <div className="card-body">
+              <div className="flex justify-between items-center">
               <h2 className="card-title text-2xl font-bold">
                 {t("response")}:
               </h2>
+              <button className="mt-4 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700" onClick={handleReadAloud}>
+                {isSpeaking ? <IoMdVolumeOff /> : <IoMdVolumeHigh />}
+              </button>
+              </div>
               {listMsgs.map((msg) => (
                 <p key={generateUniqueId()} className="text-lg">
                   {msg}
