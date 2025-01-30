@@ -293,8 +293,8 @@ const Dashboard = () => {
       )}
 
       {listMsgs.length > 0 && (
-        <div className="my-8 w-full max-w-lg mx-auto p-6 rounded-lg shadow-lg text-black bg-gray-100 dark:text-white dark:bg-base-200">
-          <div className="card text-black bg-gray-100 dark:text-white dark:bg-base-200 w-full shadow-xl">
+        <div className="my-8 w-full max-w-lg mx-auto p-6 rounded-lg shadow-lg text-black bg-gray-100 dark:text-white dark:bg-gray-800">
+          <div className="card text-black bg-gray-100 dark:text-white dark:bg-gray-800 w-full shadow-xl">
             <div className="card-body">
               <div className="flex justify-between items-center">
               <h2 className="card-title text-2xl font-bold">
@@ -305,7 +305,7 @@ const Dashboard = () => {
               </button>
               </div>
               {listMsgs.map((msg) => (
-                <p key={generateUniqueId()} className="text-lg text-black bg-gray-100 dark:text-white dark:bg-base-200">
+                <p key={generateUniqueId()} className="text-lg text-black bg-gray-100 dark:text-white dark:bg-gray-800">
                   {msg}
                 </p>
               ))}
