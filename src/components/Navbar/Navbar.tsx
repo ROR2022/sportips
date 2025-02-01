@@ -8,17 +8,29 @@ import { useTranslations } from "next-intl";
 import { setUserLocale, getUserLocale } from "@/services/locale";
 import { MAIN_APP_NAME } from "@/dataEnv/dataEnv";
 //import { ThemeSwitch } from '../theme-switch';
-import { MyThemeSwitch } from "../myThemeSwitch";
+//import { MyThemeSwitch } from "../myThemeSwitch";
 import { IDataUser } from "../Activation/Activation";
 import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
+import { generateUniqueId } from "@/services/libAux";
+import { useTheme } from "next-themes";
+import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 
 //import Drawer from './Drawer';
+
+
+const navigationPages = [
+  "dashboard",
+  "profile",
+  "pricing",
+];
+
 
 const Navbar = () => {
   const [, startTransition] = useTransition();
   const [mainTitle, setMainTitle] = useState(MAIN_APP_NAME);
   const [isMounted, setIsMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
   const t = useTranslations("Navbar");
   const [dataLocalUser] = useLocalStorage<IDataUser | null>(
     "dataLocalUserInnovare",
@@ -51,25 +63,11 @@ const Navbar = () => {
     }
   }, [dataLocalUser]);
 
-  const navLogin = () => {
+  
+  const navToPage = (page: string) => {
     setShowDrawer(false);
-    router.push(dataLocalUser ? "/logout" : "/login");
-  };
-
-  const navHome = () => {
-    setShowDrawer(false);
-    router.push("/");
-  };
-
-  const navDashboard = () => {
-    setShowDrawer(false);
-    router.push("/dashboard");
-  };
-
-  const navProfile = () => {
-    setShowDrawer(false);
-    router.push("/profile");
-  };
+    router.push(page);
+  }
 
   const handleLanguage = async () => {
     //console.log('Change Language')
@@ -89,6 +87,11 @@ const Navbar = () => {
   const handleShowDrawer = (e: React.ChangeEvent<HTMLInputElement>) => {
     setShowDrawer(e.target.checked);
     //console.log('toggle drawer: ',e.target.checked);
+  };
+
+  const handleToggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+    if(showDrawer) setShowDrawer(false);
   };
 
   if(!isMounted) return null;
@@ -123,7 +126,7 @@ const Navbar = () => {
           <div
             className="mx-2 flex-1 px-2 text-2xl font-bold"
             style={{ cursor: "pointer" }}
-            onClick={navHome}
+            onClick={()=>navToPage('/')}
           >
             <span className="flex gap-1 items-center">
             {isMounted && imageUser && (
@@ -145,40 +148,36 @@ const Navbar = () => {
               {/* Navbar menu content here */}
               {dataLocalUser && isMounted && (
                 <>
-                  <li>
+                {navigationPages.map((page) => (
+                  <li key={generateUniqueId()}>
                     <button
                       className="btn btn-square btn-ghost w-auto me-2"
-                      onClick={navDashboard}
+                      onClick={()=>navToPage(`/${page}`)}
                     >
-                      {t("dashboard")}
+                      {t(page)}
                     </button>
                   </li>
-                  <li>
-                    <button
-                      className="btn btn-square btn-ghost w-auto me-2"
-                      onClick={navProfile}
-                    >
-                      {t("profile")}
-                    </button>
-                  </li>
+                ))}
                 </>
               )}
               <li>
                 <button
-                  className="btn btn-square btn-ghost w-auto"
-                  onClick={navLogin}
+                  className="btn btn-square btn-ghost w-auto me-2"
+                  onClick={()=>dataLocalUser ? navToPage('/logout') : navToPage('/login')}
                 >
                   {dataLocalUser && isMounted ? t("logout") : t("login")}
                 </button>
               </li>
               <li>
-                <button className="btn btn-square btn-ghost">
-                  <HiLanguage onClick={handleLanguage} className="text-xl" />
+                <button className="btn btn-square btn-ghost me-2" onClick={handleLanguage}>
+                  <span><HiLanguage  className="text-xl" /></span>
+                  <span>{t("lang")=== "en" ? "Español" : "English"}</span>
                 </button>
               </li>
               <li>
-                <button className="btn btn-square btn-ghost">
-                  <MyThemeSwitch />
+                <button className="btn btn-square btn-ghost" onClick={handleToggleTheme}>
+                {theme === "light" ? <MoonFilledIcon /> : <SunFilledIcon />}
+                {theme === "light" ? "Dark" : "Light"}
                 </button>
               </li>
             </ul>
@@ -193,40 +192,27 @@ const Navbar = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu bg-base-200 min-h-full w-80 p-4">
-          <li>
-            <button
-              className="btn btn-square btn-ghost w-full flex justify-start ps-4"
-              onClick={()=>setShowDrawer(false)}
-            >
-              <IoMdClose  className="text-right" />
-            </button>
-          </li>
+          
         
           {/* Sidebar content here */}
           {dataLocalUser && isMounted && (
             <>
-            <li>
-              <button
-                className="btn btn-square btn-ghost w-full flex justify-start ps-4"
-                onClick={navDashboard}
-              >
-                {t("dashboard")}
-              </button>
-            </li>
-            <li>
-              <button
-                className="btn btn-square btn-ghost w-full flex justify-start ps-4"
-                onClick={navProfile}
-              >
-                {t("profile")}
-              </button>
-            </li>
+            {navigationPages.map((page) => 
+              <li key={generateUniqueId()}>
+                <button
+                  className="btn btn-square btn-ghost w-full flex justify-start ps-4"
+                  onClick={()=>navToPage(`/${page}`)}
+                >
+                  {t(page)}
+                </button>
+              </li>
+            )}
             </>
           )}
           <li>
             <button
               className="btn btn-square btn-ghost w-full flex justify-start ps-4"
-              onClick={navLogin}
+              onClick={()=> dataLocalUser? navToPage('/logout') : navToPage('/login')}
             >
               {dataLocalUser && isMounted ? t("logout") : t("login")}
             </button>
@@ -234,11 +220,21 @@ const Navbar = () => {
           <li>
             <button className="btn btn-square btn-ghost w-full flex justify-start ps-4" onClick={handleLanguage}>
               <HiLanguage className="text-xl" />
+              {t("lang")=== "en" ? "Español" : "English"}
             </button>
           </li>
           <li>
-            <button className="btn btn-square btn-ghost w-full flex justify-start ps-4" onClick={()=>setShowDrawer(false)}>
-              <MyThemeSwitch />
+            <button className="btn btn-square btn-ghost w-full flex justify-start ps-4" onClick={handleToggleTheme}>
+              {theme === "light" ? <MoonFilledIcon /> : <SunFilledIcon />}
+              {theme === "light" ? "Dark" : "Light"}
+            </button>
+          </li>
+          <li>
+            <button
+              className="btn btn-square btn-ghost w-full flex justify-start ps-4"
+              onClick={()=>setShowDrawer(false)}
+            >
+              <IoMdClose  className="text-right" />
             </button>
           </li>
         </ul>

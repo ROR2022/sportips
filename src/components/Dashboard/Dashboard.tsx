@@ -1,12 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import { useLocalStorage } from "usehooks-ts";
 import { useMediaQuery } from "usehooks-ts";
 import { IoMdClose, IoMdSearch, IoMdMic, IoMdMicOff, IoMdVolumeHigh, IoMdVolumeOff } from "react-icons/io";
 import { generateUniqueId } from "@/services/libAux";
 import FunnyImages from "./FunnyImages";
 import { IDataUser } from "../Activation/Activation";
+import axios from "axios";
 
 const listQuestionsES = [
   { id: "q01", question: "¿Dame 5 consejos para mejorar mi salud mental?" },
@@ -31,13 +33,17 @@ const listQuestionsEN = [
 
 const Dashboard = () => {
   const t = useTranslations("Dashboard");
+  const router = useRouter();
   const [message, setMessage] = useState<string>("");
+  const [showBuyQuestions, setShowBuyQuestions] = useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  const [dataLocalUser] = useLocalStorage<IDataUser | null>(
+  const [dataLocalUser, setDataLocalUser] = useLocalStorage<IDataUser | null>(
     "dataLocalUserInnovare",
     null
   );
   const [loading, setLoading] = useState<boolean>(false);
+  const [totalQuestions, setTotalQuestions] = useState<number>(0);
   const [isListening, setIsListening] = useState<boolean>(false);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
   const [langSelected, setLangSelected] = useState<string>(t("myLang"));
@@ -61,7 +67,13 @@ const Dashboard = () => {
 
   
 
-  useEffect(() => {}, [dataLocalUser]);
+  useEffect(() => {
+    if (dataLocalUser) {
+      const qBuyed = dataLocalUser.questionsBuyed || 0;
+      const qFree = dataLocalUser.questionsFree || 0;
+      setTotalQuestions(qBuyed + qFree);
+    }
+  }, [dataLocalUser]);
 
   useEffect(() => {
     if (langSelected === "es") {
@@ -79,6 +91,11 @@ const Dashboard = () => {
   }, [t("myLang")]);
 
   const handleSearch = async (tempMsg: string) => {
+    if(!dataLocalUser){
+      //alert("No se ha encontrado información del usuario.");
+      console.error("No se ha encontrado información del usuario.");
+      return;
+    }
     if (message === "" && !tempMsg) return;
     setLoading(true);
     try {
@@ -101,7 +118,7 @@ const Dashboard = () => {
 
       const response = await fetch(`/api/chatbot`, {
         method: "POST",
-        body: JSON.stringify({ message: finalQuery, lang: langSelected }),
+        body: JSON.stringify({ message: finalQuery, lang: langSelected, userId: dataLocalUser?._id }),
         headers: { "Content-Type": "application/json" },
       });
 
@@ -109,15 +126,37 @@ const Dashboard = () => {
       
       
       const data = await response.json();
+      //console.log("data search: ", data);
+
       if (data?.message) {
         const stringMsg = data?.message;
         const listMsgsTemp = stringMsg.split("\n");
         setListMsgs(listMsgsTemp);
       }
+
+      if(data?.error){
+        setErrorMsg(data.error);
+        setShowBuyQuestions(true);
+        console.log('error search: ', data.error);
+        setTimeout(() => {
+          setErrorMsg("");
+        }, 5000);
+      }
+
+
+      //ahora se recuperan los datos del usuario de la base de datos y despues se actualizan en localstorage
+      const responseUser = await axios.get(`/api/user?userId=${dataLocalUser._id}`);
+
+      if(responseUser.data){
+        setDataLocalUser({
+          ...responseUser.data,
+          token: dataLocalUser?.token || "",
+        });
+      }
         
       setLoading(false);
     } catch (error) {
-      console.error(error);
+      console.error('error search: ', error);
       setLoading(false);
     }
   };
@@ -196,7 +235,7 @@ const Dashboard = () => {
 
   const handleClear = () => {
     setMessage("");
-
+    setErrorMsg("");
     setListMsgs([]);
   };
 
@@ -204,6 +243,10 @@ const Dashboard = () => {
     handleClear();
     handleSearch(question);
   };
+
+  const handleBuyQuestions = () => {
+    router.push("/pricing");
+  }
 
   if (!isMounted) return null;
 
@@ -254,6 +297,31 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <div className="flex justify-center my-2">
+        <p className="text-xs">{t('questions')} {totalQuestions}</p>
+      </div>
+
+      {errorMsg && (
+        <div className="flex justify-center my-4">
+        <div className="alert alert-error mt-4">
+        <div className="flex-1">
+          <label>{errorMsg}</label>
+        </div>
+      </div>
+      </div>
+      )}
+
+      {showBuyQuestions && (
+        <div className="flex justify-center my-4">
+          <button
+            className="btn btn-secondary dark:btn-primary text-xl"
+            onClick={handleBuyQuestions}
+          >
+            {t("myLang")=== "es" ? "Comprar preguntas !!!" : "Buy questions !!!"}
+          </button>
+        </div>
+      )}
 
       <h2 className="text-center my-8 text-2xl font-bold text-white">
         {t("sugested")}

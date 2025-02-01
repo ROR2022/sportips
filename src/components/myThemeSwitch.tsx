@@ -1,10 +1,10 @@
 "use Client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 
 export const MyThemeSwitch = () => {
-  const [mounted, setMounted] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);

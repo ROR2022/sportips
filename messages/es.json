@@ -1,9 +1,11 @@
 {
   "Navbar": {
+    "lang": "es",
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
     "dashboard": "Consejero",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "pricing": "Precios"
   },
   "Footer": {
     "rights": "Todos los derechos reservados.",
@@ -69,6 +71,7 @@
       "title": "¡Estoy aquí para ayudar!",
       "description": "LiveCoaching tu consejero de vida que proporciona sabiduría y orientación a las personas que buscan respuestas a sus preguntas más profundas.",
       "search": "Buscar",
+      "questions": "Preguntas restantes: ",
       "sugested": "Sugerido:",
       "free": "Pregúntame cualquier cosa",
       "myLang": "es",
@@ -90,6 +93,7 @@
       "description": "Te sugerimos que completes tu perfil para que podamos compartirte tu carta astral.",
       "name": "Nombre",
       "email": "Correo electrónico",
+      "questions": "Preguntas restantes",
       "currentImage": "Imagen actual",
       "selectImage": "Seleccionar Nueva imagen",
       "noImage": "Sin imagen",
@@ -98,5 +102,39 @@
       "selectBirthDate": "Seleccionar fecha de nacimiento",
       "successMsg": "¡Perfil actualizado con éxito!",
       "errorMsg": "Lo siento, algo salió mal. Por favor, inténtalo de nuevo."
+    },
+    "Pricing": {
+      "title": "Precios",
+      "description": "Elige el plan que mejor se adapte a tus necesidades.",
+      "subDescription": "Sin pagos mensuales, sin compromisos. ¡Empieza hoy!",
+      "lang": "es",
+      "basic": "Básico",
+      "costBasic": "$5.00 USD",
+      "descBasic": "Obtén 50 preguntas",
+      "premium": "Premium",
+      "costPremium": "$10.00 USD",
+      "descPremium": "Obtén 100 preguntas",
+      "button": "Seleccionar"
+    },
+    "Payment": {
+      "title": "Pago",
+      "description": "Por favor, selecciona tu plan de pago.",
+      "package": "Paquete seleccionado: ",
+      "amount": "Cantidad a pagar: ",
+      "lang": "es",
+      "basic": "Básico",
+      "costBasic": "$5.00 USD",
+      "descBasic": "Obtén 50 preguntas",
+      "premium": "Premium",
+      "costPremium": "$10.00 USD",
+      "descPremium": "Obtén 100 preguntas",
+      "button": "Seleccionar"
+    },
+    "PaymentResult": {
+      "title": "Resultado del pago",
+      "success": "Tu pago se realizó con éxito. ¡Ahora puedes comenzar a usar tu plan!",
+      "error": "Hubo un error al procesar tu pago. Por favor, inténtalo de nuevo.",
+      "lang": "es",
+      "button": "Volver al consejero"
     }
   }

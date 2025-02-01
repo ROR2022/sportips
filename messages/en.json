@@ -1,9 +1,11 @@
 {
   "Navbar":{
+    "lang": "en",
     "login": "Login",
     "logout": "Logout",
     "dashboard": "Counselor",
-    "profile": "Profile"
+    "profile": "Profile",
+    "pricing": "Pricing"
   },
   "Footer": {
     "rights": "All rights reserved.",
@@ -69,6 +71,7 @@
     "title": "I'm here to help!",
     "description": "LiveCoaching your life coach that provides wisdom and guidance to people seeking answers to their deepest questions.",
     "search": "Search",
+    "questions": "Questions Available: ",
     "sugested": "Suggested:",
     "free": "Ask me anything",
     "myLang": "en",
@@ -90,6 +93,7 @@
     "lang": "en",
     "name": "Name",
     "email": "Email",
+    "questions": "Questions Available",
     "currentImage": "Current Image",
     "selectImage": "Select New Image",
     "noImage": "No image selected",
@@ -98,5 +102,38 @@
     "selectBirthDate": "Select Birth Date",
     "successMsg": "Profile updated successfully",
     "errorMsg": "Error updating profile"
+  },
+  "Pricing": {
+    "title": "Pricing",
+    "description": "Choose the plan that best suits your needs.",
+    "subDescription": "No monthly payments, no commitments. Start today!",
+    "lang": "en",
+    "basic": "Basic",
+    "costBasic": "$5.00 USD",
+    "descBasic": "Get 50 questions",
+    "premium": "Premium",
+    "costPremium": "$10.00 USD",
+    "descPremium": "Get 100 questions",
+    "button": "Select"
+  },
+  "Payment": {
+    "title": "Payment",
+    "description": "Please complete the payment to start your plan.",
+    "package": "Package Selected: ",
+    "amount": "Amount: ",
+    "lang": "en",
+    "card": "Card Number",
+    "expiration": "Expiration Date",
+    "cvc": "CVC",
+    "button": "Pay",
+    "successMsg": "Payment completed successfully",
+    "errorMsg": "Error completing payment"
+  },
+  "PaymentResult": {
+    "title": "Payment Result",
+    "success": "Your payment was successful. You can now start using your plan.",
+    "error": "There was an error processing your payment. Please try again.",
+    "lang": "en",
+    "button": "Go to Counseling"
   }
 }

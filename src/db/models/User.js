@@ -37,6 +37,14 @@ const UserSchema = new mongoose.Schema(
     birthDate: {
       type: Date,
     },
+    questionsBuyed: {
+      type: Number,
+      default: 0,
+    },
+    questionsFree: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );

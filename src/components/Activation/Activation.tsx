@@ -29,6 +29,8 @@ export interface IDataUser {
   token?: string;
   imageUrl?: string;
   birthDate?: Date;
+  questionsBuyed?: number;
+  questionsFree?: number;
 }
 
 interface IMessage {

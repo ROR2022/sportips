@@ -21,7 +21,7 @@ const Logout = () => {
 
   return (
     <div className="flex items-center justify-center mt-8">
-      <div className="card bg-base-100 w-96 shadow-xl">
+      <div className="card bg-gray-100 text-black dark:bg-gray-900 dark:text-white w-96 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">{t('title')}</h2>
           <p>{t('description')}</p>
