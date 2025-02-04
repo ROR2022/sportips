@@ -89,7 +89,7 @@ const Login = () => {
             <Link className="text-sm underline text-cyan-500" href="/register">
               {t("notRegistered")}
             </Link>
-            <label className="input input-bordered flex items-center gap-2 bg-white dark:bg-black">
+            <label className="input input-bordered flex items-center gap-2 bg-white text-black dark:bg-black dark:text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -114,7 +114,7 @@ const Login = () => {
                 {errors.email}
               </div>
             )}
-            <label className="input input-bordered flex items-center gap-2 bg-white dark:bg-black">
+            <label className="input input-bordered flex items-center gap-2 bg-white text-black dark:bg-black dark:text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -154,7 +154,7 @@ const Login = () => {
             )}
             <div className="card-actions justify-end">
               <button
-                className="btn btn-primary bg-cyan-100 dark:bg-cyan-900"
+                className="btn btn-primary bg-cyan-100 text-black dark:bg-cyan-900 dark:text-white"
                 type="submit"
               >
                 {loading ? <span className="loading loading-spinner loading-sm"></span> : t("title")}

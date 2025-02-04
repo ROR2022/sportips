@@ -25,10 +25,11 @@ interface IFormValues {
 }
 
 //imageUrl: '/images/default-profile.png'
+//el schema permita que el campo birthDate sea date or null
 const validationSchema = Yup.object({
   name: Yup.string().required("Required"),
   email: Yup.string().email("Invalid email address").required("Required"),
-  birthDate: Yup.date(),
+  birthDate: Yup.date().nullable(),
 });
 
 const Profile = () => {
@@ -179,7 +180,10 @@ const Profile = () => {
         <form onSubmit={handleSubmit}>
           <div className="card-body">
             <h2 className="card-title text-3xl">{t("title")}</h2>
-            <p className="text-xs">{t("description")}</p>
+            {!dataLocalUser?.birthDate && (
+              <p className="text-xs text-error">{t("description")}</p>
+            )}
+            
             {imageUser && (
               <div className="flex items-center justify-center my-2">
                 <p>{t("currentImage")}</p>

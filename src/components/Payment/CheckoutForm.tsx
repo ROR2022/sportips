@@ -1,9 +1,9 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   PaymentElement,
   useStripe,
-  useElements
+  useElements,
 } from "@stripe/react-stripe-js";
 import { useTranslations } from "next-intl";
 
@@ -13,20 +13,15 @@ import { useTranslations } from "next-intl";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-
 export default function CheckoutForm() {
-  
   const stripe = useStripe();
   const elements = useElements();
   const t = useTranslations("Checkout");
-  const returnUrl= `${apiUrl || "notDefinedUrl"}/payment-result`;
-  console.log('returnUrl: ',returnUrl);
+  const returnUrl = `${apiUrl || "notDefinedUrl"}/payment-result`;
+  console.log("returnUrl: ", returnUrl);
 
-
-  const [message, setMessage] = useState<string|null>(null);
+  const [message, setMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  
 
   useEffect(() => {
     if (!stripe) {
@@ -71,9 +66,6 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
-    
-    
-
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -90,7 +82,7 @@ export default function CheckoutForm() {
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message ?? "An unexpected error occurred.");
     } else {
-      console.log('error payment intent: ',error);
+      console.log("error payment intent: ", error);
       setMessage("An unexpected error occurred.");
     }
 
@@ -103,17 +95,31 @@ export default function CheckoutForm() {
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
-
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <div className="flex justify-center my-4">
-      <button disabled={isLoading || !stripe || !elements} id="submit" className="btn btn-success">
-        <span id="button-text">
-          {isLoading ? <span className="loading loading-spinner loading-sm"></span> : t("button")}
-        </span>
-      </button>
+        <button
+          disabled={isLoading || !stripe || !elements}
+          id="submit"
+          className="btn btn-success"
+        >
+          <span id="button-text">
+            {isLoading ? (
+              <span className="loading loading-spinner loading-sm"></span>
+            ) : (
+              t("button")
+            )}
+          </span>
+        </button>
       </div>
       {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
+      {/* {message && <div id="payment-message">{message}</div>} */}
+      {message && (
+        <div className="alert alert-error mt-4">
+          <div className="flex-1">
+            <label>{message}</label>
+          </div>
+        </div>
+      )}
     </form>
   );
 }

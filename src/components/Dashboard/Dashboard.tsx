@@ -72,6 +72,7 @@ const Dashboard = () => {
       const qBuyed = dataLocalUser.questionsBuyed || 0;
       const qFree = dataLocalUser.questionsFree || 0;
       setTotalQuestions(qBuyed + qFree);
+      //console.log("dataLocalUser: ", dataLocalUser);
     }
   }, [dataLocalUser]);
 
@@ -301,6 +302,17 @@ const Dashboard = () => {
       <div className="flex justify-center my-2">
         <p className="text-xs">{t('questions')} {totalQuestions}</p>
       </div>
+
+      {!dataLocalUser?.birthDate && (
+        <div className="flex justify-center my-4">
+          <button
+            className="btn btn-link text-success dark:btn-link dark:text-blue text-xs"
+            onClick={() => router.push("/profile")}
+          >
+            {t("completeProfile")}
+          </button>
+        </div>
+      )}
 
       {errorMsg && (
         <div className="flex justify-center my-4">
