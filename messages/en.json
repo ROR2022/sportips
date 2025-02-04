@@ -1,5 +1,5 @@
 {
-  "Navbar":{
+  "Navbar": {
     "lang": "en",
     "login": "Login",
     "logout": "Logout",
@@ -135,5 +135,12 @@
     "error": "There was an error processing your payment. Please try again.",
     "lang": "en",
     "button": "Go to Counseling"
+  },
+  "Checkout": {
+    "title": "Checkout",
+    "lang": "en",
+    "button": "Pay Now",
+    "successMsg": "Payment completed successfully",
+    "errorMsg": "Error completing payment"
   }
 }

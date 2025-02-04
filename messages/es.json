@@ -18,123 +18,128 @@
     "accept": "Cerrar sesión",
     "cancel": "Cancelar"
   },
-    "HomePage": {
-      "title": "Encuentra Respuestas, Encuentra Paz",
-      "subTitle": "LiveCoaching: Tu consejero de vida personal. Sabiduría práctica y orientación para las preguntas más profundas de tu vida.",
-      "button1": "Habla con tu consejero ahora",
-      "section1": "¿Te sientes perdido o necesitas claridad?",
-      "description1": "En un mundo lleno de ruido, encontrar dirección puede ser abrumador. LiveCoaching es tu compañero confiable, combinando tecnología avanzada con empatía humana para brindarte la orientación que necesitas.",
-      "section2": "¿Por qué LiveCoaching es único?",
-      "description2": "",
-      "section3": "Empieza tu camino hacia la claridad hoy mismo",
-      "description3": "",
-      "lang": "es"
-    },
-    "Login": {
-      "title": "Iniciar sesión",
-      "email": "Correo electrónico",
-      "password": "Contraseña",
-      "forgotPassword": "¿Olvidaste tu contraseña?",
-      "notRegistered": "¿Aún no estás registrado?"
-    },
-    "Register": {
-      "title": "Registro",
-      "name": "Nombre",
-      "email": "Correo electrónico",
-      "password": "Contraseña",
-      "confirmPassword": "Confirmar Contraseña",
-      "alreadyRegistered": "¿Ya estás registrado?"
-    },
-    "Activation": {
-      "title": "Activación",
-      "description": "Por favor, escribe tu Código de Activación que fue enviado a tu correo electrónico:",
-      "successMsg": "¡Bienvenido, estás activo!",
-      "errorMsg": "Lo siento, código incorrecto",
-      "button": "Activar"
-    },
-    "Forgot": {
-      "title": "Olvidé mi contraseña",
-      "description": "Por favor, escribe tu correo electrónico para enviarte un código de restablecimiento de contraseña:",
-      "placeholder": "Correo electrónico",
-      "button": "Enviar"
-    },
-    "Recovery": {
-      "title": "Restablecer contraseña",
-      "description": "Por favor, escribe tu código de recuperación y nueva contraseña:",
-      "email": "Correo electrónico",
-      "code": "Código",
-      "password": "Contraseña",
-      "confirmPassword": "Confirmar Contraseña",
-      "button": "Restablecer"
-    },
-    "Dashboard": {
-      "title": "¡Estoy aquí para ayudar!",
-      "description": "LiveCoaching tu consejero de vida que proporciona sabiduría y orientación a las personas que buscan respuestas a sus preguntas más profundas.",
-      "search": "Buscar",
-      "questions": "Preguntas restantes: ",
-      "sugested": "Sugerido:",
-      "free": "Pregúntame cualquier cosa",
-      "myLang": "es",
-      "response": "Respuesta"
-    },
-    "Privacy": {
-      "title": "Política de privacidad",
-      "description": "Tu privacidad es importante para nosotros. Es política de LiveCoaching respetar tu privacidad con respecto a cualquier información que podamos recopilar de ti a través de nuestro sitio web.",
-      "lang": "es"
-    },
-    "Terms": {
-      "title": "Términos de servicio",
-      "description": "Estos términos de servicio describen las reglas y regulaciones para el uso del sitio web de LiveCoaching, ubicado en livecoaching.com.",
-      "lang": "es"
-    },
-    "Profile": {
-      "title": "Perfil",
-      "lang": "es",
-      "description": "Te sugerimos que completes tu perfil para que podamos compartirte tu carta astral.",
-      "name": "Nombre",
-      "email": "Correo electrónico",
-      "questions": "Preguntas restantes",
-      "currentImage": "Imagen actual",
-      "selectImage": "Seleccionar Nueva imagen",
-      "noImage": "Sin imagen",
-      "button": "Guardar cambios",
-      "birthDate": "Fecha de nacimiento",
-      "selectBirthDate": "Seleccionar fecha de nacimiento",
-      "successMsg": "¡Perfil actualizado con éxito!",
-      "errorMsg": "Lo siento, algo salió mal. Por favor, inténtalo de nuevo."
-    },
-    "Pricing": {
-      "title": "Precios",
-      "description": "Elige el plan que mejor se adapte a tus necesidades.",
-      "subDescription": "Sin pagos mensuales, sin compromisos. ¡Empieza hoy!",
-      "lang": "es",
-      "basic": "Básico",
-      "costBasic": "$5.00 USD",
-      "descBasic": "Obtén 50 preguntas",
-      "premium": "Premium",
-      "costPremium": "$10.00 USD",
-      "descPremium": "Obtén 100 preguntas",
-      "button": "Seleccionar"
-    },
-    "Payment": {
-      "title": "Pago",
-      "description": "Por favor, selecciona tu plan de pago.",
-      "package": "Paquete seleccionado: ",
-      "amount": "Cantidad a pagar: ",
-      "lang": "es",
-      "basic": "Básico",
-      "costBasic": "$5.00 USD",
-      "descBasic": "Obtén 50 preguntas",
-      "premium": "Premium",
-      "costPremium": "$10.00 USD",
-      "descPremium": "Obtén 100 preguntas",
-      "button": "Seleccionar"
-    },
-    "PaymentResult": {
-      "title": "Resultado del pago",
-      "success": "Tu pago se realizó con éxito. ¡Ahora puedes comenzar a usar tu plan!",
-      "error": "Hubo un error al procesar tu pago. Por favor, inténtalo de nuevo.",
-      "lang": "es",
-      "button": "Volver al consejero"
-    }
+  "HomePage": {
+    "title": "Encuentra Respuestas, Encuentra Paz",
+    "subTitle": "LiveCoaching: Tu consejero de vida personal. Sabiduría práctica y orientación para las preguntas más profundas de tu vida.",
+    "button1": "Habla con tu consejero ahora",
+    "section1": "¿Te sientes perdido o necesitas claridad?",
+    "description1": "En un mundo lleno de ruido, encontrar dirección puede ser abrumador. LiveCoaching es tu compañero confiable, combinando tecnología avanzada con empatía humana para brindarte la orientación que necesitas.",
+    "section2": "¿Por qué LiveCoaching es único?",
+    "description2": "",
+    "section3": "Empieza tu camino hacia la claridad hoy mismo",
+    "description3": "",
+    "lang": "es"
+  },
+  "Login": {
+    "title": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "notRegistered": "¿Aún no estás registrado?"
+  },
+  "Register": {
+    "title": "Registro",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "alreadyRegistered": "¿Ya estás registrado?"
+  },
+  "Activation": {
+    "title": "Activación",
+    "description": "Por favor, escribe tu Código de Activación que fue enviado a tu correo electrónico:",
+    "successMsg": "¡Bienvenido, estás activo!",
+    "errorMsg": "Lo siento, código incorrecto",
+    "button": "Activar"
+  },
+  "Forgot": {
+    "title": "Olvidé mi contraseña",
+    "description": "Por favor, escribe tu correo electrónico para enviarte un código de restablecimiento de contraseña:",
+    "placeholder": "Correo electrónico",
+    "button": "Enviar"
+  },
+  "Recovery": {
+    "title": "Restablecer contraseña",
+    "description": "Por favor, escribe tu código de recuperación y nueva contraseña:",
+    "email": "Correo electrónico",
+    "code": "Código",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "button": "Restablecer"
+  },
+  "Dashboard": {
+    "title": "¡Estoy aquí para ayudar!",
+    "description": "LiveCoaching tu consejero de vida que proporciona sabiduría y orientación a las personas que buscan respuestas a sus preguntas más profundas.",
+    "search": "Buscar",
+    "questions": "Preguntas restantes: ",
+    "sugested": "Sugerido:",
+    "free": "Pregúntame cualquier cosa",
+    "myLang": "es",
+    "response": "Respuesta"
+  },
+  "Privacy": {
+    "title": "Política de privacidad",
+    "description": "Tu privacidad es importante para nosotros. Es política de LiveCoaching respetar tu privacidad con respecto a cualquier información que podamos recopilar de ti a través de nuestro sitio web.",
+    "lang": "es"
+  },
+  "Terms": {
+    "title": "Términos de servicio",
+    "description": "Estos términos de servicio describen las reglas y regulaciones para el uso del sitio web de LiveCoaching, ubicado en livecoaching.com.",
+    "lang": "es"
+  },
+  "Profile": {
+    "title": "Perfil",
+    "lang": "es",
+    "description": "Te sugerimos que completes tu perfil para que podamos compartirte tu carta astral.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "questions": "Preguntas restantes",
+    "currentImage": "Imagen actual",
+    "selectImage": "Seleccionar Nueva imagen",
+    "noImage": "Sin imagen",
+    "button": "Guardar cambios",
+    "birthDate": "Fecha de nacimiento",
+    "selectBirthDate": "Seleccionar fecha de nacimiento",
+    "successMsg": "¡Perfil actualizado con éxito!",
+    "errorMsg": "Lo siento, algo salió mal. Por favor, inténtalo de nuevo."
+  },
+  "Pricing": {
+    "title": "Precios",
+    "description": "Elige el plan que mejor se adapte a tus necesidades.",
+    "subDescription": "Sin pagos mensuales, sin compromisos. ¡Empieza hoy!",
+    "lang": "es",
+    "basic": "Básico",
+    "costBasic": "$5.00 USD",
+    "descBasic": "Obtén 50 preguntas",
+    "premium": "Premium",
+    "costPremium": "$10.00 USD",
+    "descPremium": "Obtén 100 preguntas",
+    "button": "Seleccionar"
+  },
+  "Payment": {
+    "title": "Pago",
+    "description": "Por favor, selecciona tu plan de pago.",
+    "package": "Paquete seleccionado: ",
+    "amount": "Cantidad a pagar: ",
+    "lang": "es",
+    "basic": "Básico",
+    "costBasic": "$5.00 USD",
+    "descBasic": "Obtén 50 preguntas",
+    "premium": "Premium",
+    "costPremium": "$10.00 USD",
+    "descPremium": "Obtén 100 preguntas",
+    "button": "Seleccionar"
+  },
+  "PaymentResult": {
+    "title": "Resultado del pago",
+    "success": "Tu pago se realizó con éxito. ¡Ahora puedes comenzar a usar tu plan!",
+    "error": "Hubo un error al procesar tu pago. Por favor, inténtalo de nuevo.",
+    "lang": "es",
+    "button": "Volver al consejero"
+  },
+  "Checkout": {
+    "title": "Pago",
+    "lang": "es",
+    "button": "Pagar ahora"
   }
+}

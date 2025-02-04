@@ -77,7 +77,7 @@ export async function PUT(req) {
       const userFind = await axios.get(
         `${process.env.API_URL}/api/user?id=${user}`
       );
-      const questionsBuyed = userFind.data.questionsBuyed + questionsBuyedNow;
+      const questionsBuyed = (userFind.data.questionsBuyed || 0) + questionsBuyedNow;
       const userUpdate = await axios.put(`${process.env.API_URL}/api/user`, {
         _id: user,
         questionsBuyed,

@@ -70,7 +70,7 @@ const Login = () => {
       } else {
         setErrorMsg("");
         setDataLocalUser(resultLogin);
-        router.push("/dashboard");
+        router.push("/profile");
       }
       setLoading(false);
     } catch (error) {

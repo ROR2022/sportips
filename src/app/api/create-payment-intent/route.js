@@ -20,12 +20,17 @@ export async function POST(req) {
   try {
     const data = await req.json();
 
+    const dataDescription = {
+      user: data.user,
+      pkgDescription: data.pkg.description,
+      questions: data.pkg.questions,
+    };
+
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
       amount: calculateOrderAmount(data),
       currency: "usd",
-      customer: data.user,
-      description: data.pkg.description,
+      description: JSON.stringify(dataDescription),
       // In the latest version of the API, specifying the `automatic_payment_methods` 
       // parameter is optional because Stripe enables its functionality by default.
       automatic_payment_methods: {
@@ -42,6 +47,7 @@ export async function POST(req) {
       pkgDescription: data.pkg.description,
       questions: data.pkg.questions,
       paymentIntent: paymentIntent.id,
+      paymentResult: "Payment Intent: created",
     };
     const resultPaymentIntent = await axios.post(
       `${process.env.API_URL}/api/payment`,
@@ -54,7 +60,7 @@ export async function POST(req) {
   } catch (error) {
     console.error(
       "Error al obtener la respuesta de stripe:",
-      error.response?.data || error.message
+      error
     );
     return NextResponse.json(
       {

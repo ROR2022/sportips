@@ -1,26 +1,34 @@
-import React from "react";
+"use client";
+import React, {useEffect, useState} from "react";
 import {
   PaymentElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import { useTranslations } from "next-intl";
 
-//http://localhost:3000/?payment_intent=pi_3QnKBdA1zWjPUlRh1Skq4e7V&
-// payment_intent_client_secret=pi_3QnKBdA1zWjPUlRh1Skq4e7V_secret_QpTkzk8TiUBHipURmP0ukg8qk&
+//http://localhost:3000/?payment_intent=
+// payment_intent_client_secret=
 // redirect_status=succeeded
 
-const { NEXT_PUBLIC_API_URL } = process.env;
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 
 export default function CheckoutForm() {
+  
   const stripe = useStripe();
   const elements = useElements();
+  const t = useTranslations("Checkout");
+  const returnUrl= `${apiUrl || "notDefinedUrl"}/payment-result`;
+  console.log('returnUrl: ',returnUrl);
 
 
-  const [message, setMessage] = React.useState(null);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [message, setMessage] = useState<string|null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  React.useEffect(() => {
+  
+
+  useEffect(() => {
     if (!stripe) {
       return;
     }
@@ -34,7 +42,7 @@ export default function CheckoutForm() {
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      switch (paymentIntent.status) {
+      switch (paymentIntent?.status) {
         case "succeeded":
           setMessage("Payment succeeded!");
           break;
@@ -51,7 +59,8 @@ export default function CheckoutForm() {
     });
   }, [stripe]);
 
-  const handleSubmit = async (e) => {
+  //eslint-disable-next-line
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -62,11 +71,14 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
+    
+    
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${NEXT_PUBLIC_API_URL}/payment-result`,
+        return_url: returnUrl,
       },
     });
 
@@ -76,7 +88,7 @@ export default function CheckoutForm() {
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
+      setMessage(error.message ?? "An unexpected error occurred.");
     } else {
       console.log('error payment intent: ',error);
       setMessage("An unexpected error occurred.");
@@ -86,7 +98,7 @@ export default function CheckoutForm() {
   };
 
   const paymentElementOptions = {
-    layout: "tabs",
+    layout: "tabs" as const,
   };
 
   return (
@@ -96,7 +108,7 @@ export default function CheckoutForm() {
       <div className="flex justify-center my-4">
       <button disabled={isLoading || !stripe || !elements} id="submit" className="btn btn-success">
         <span id="button-text">
-          {isLoading ? <span className="loading loading-spinner loading-sm"></span> : "Pagar"}
+          {isLoading ? <span className="loading loading-spinner loading-sm"></span> : t("button")}
         </span>
       </button>
       </div>

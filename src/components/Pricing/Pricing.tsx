@@ -3,6 +3,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
+
+
 const Pricing = () => {
   const t = useTranslations("Pricing");
   const router = useRouter();
@@ -25,6 +27,8 @@ const Pricing = () => {
       ],
     },
   ];
+
+   
 
   
   const handleSelectPackage = (e: React.MouseEvent<HTMLButtonElement>) => {

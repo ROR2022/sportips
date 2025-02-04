@@ -19,6 +19,8 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
 );
 
+
+
 interface GetPkgSelectedProps {
   setPkgSelected: (pkg: string) => void;
 }
@@ -34,6 +36,15 @@ const GetPkgSelected: FC<GetPkgSelectedProps> = ({ setPkgSelected }) => {
   }, [pkgSelected]);
 
   return null;
+};
+
+type TDataPackage = {
+  id: string;
+  name: string;
+  price: string;
+  description: string;
+  questions: number;
+  amount: number;
 };
 
 const dataPackages = [
@@ -58,6 +69,8 @@ const dataPackages = [
 const Payment = () => {
     const t = useTranslations("Payment");
   const [pkgSelected, setPkgSelected] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const [dataLocalUser] = useLocalStorage<IDataUser | null>(
     "dataLocalUserInnovare",
     null
@@ -65,23 +78,28 @@ const Payment = () => {
   const [clientSecret, setClientSecret] = useState("");
   const [myPackage, setMyPackage] = useState(dataPackages[0]);
 
+  
+
+
   useEffect(() => {}, [dataLocalUser]);
   useEffect(() => {
     if (pkgSelected !== "") {
       //console.log('package selected: ', pkgSelected);
-      createPaymentIntent();
+      const dataPkgSelected = dataPackages[parseInt(pkgSelected) - 1];
+      createPaymentIntent(dataPkgSelected);
       setMyPackage(dataPackages[parseInt(pkgSelected) - 1]);
     }
   }, [pkgSelected]);
 
   // Create PaymentIntent
 
-  const createPaymentIntent = async () => {
+  const createPaymentIntent = async (dataPkgSelected: TDataPackage) => {
     if(!dataLocalUser) return;
 
+    setLoading(true);
     const dataPaymentIntent = {
       user: dataLocalUser._id,
-      pkg: myPackage,
+      pkg: dataPkgSelected,
     };
     try {
       const result = await fetch("/api/create-payment-intent", {
@@ -91,17 +109,27 @@ const Payment = () => {
       });
       const data = await result.json();
       setClientSecret(data.clientSecret);
+      setLoading(false);
     } catch (error) {
       console.log("error: ", error);
+      setErrorMsg("Error creating payment intent");
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 3000);
+      setLoading(false);
     }
   };
 
   const appearance: Appearance = {
     theme: "stripe",
   };
+
+  const locale = t("lang");
+
   const options: StripeElementsOptions = {
     clientSecret,
     appearance,
+    locale: locale as StripeElementsOptions["locale"],
   };
 
   return (
@@ -109,9 +137,14 @@ const Payment = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <GetPkgSelected setPkgSelected={setPkgSelected} />
       </Suspense>
-      {!clientSecret && (
+      {!clientSecret&&loading && (
         <div className="flex justify-center items-center mt-8">
           <span className="loading loading-spinner loading-lg"></span>
+        </div>
+      )}
+      {errorMsg && (
+        <div className="flex justify-center items-center mt-8">
+          <div className="alert alert-error">{errorMsg}</div>
         </div>
       )}
       {clientSecret && (
