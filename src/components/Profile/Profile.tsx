@@ -179,7 +179,7 @@ const Profile = () => {
       <div className="card bg-gray-200 text-black dark:bg-base-100 dark:text-white w-96 shadow-xl">
         <form onSubmit={handleSubmit}>
           <div className="card-body">
-            <h2 className="card-title text-3xl">{t("title")}</h2>
+            <h2 className="card-title text-black dark:text-black text-3xl">{t("title")}</h2>
             {!dataLocalUser?.birthDate && (
               <p className="text-xs text-error">{t("description")}</p>
             )}
