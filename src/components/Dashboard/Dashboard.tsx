@@ -72,7 +72,7 @@ const Dashboard = () => {
       const qBuyed = dataLocalUser.questionsBuyed || 0;
       const qFree = dataLocalUser.questionsFree || 0;
       setTotalQuestions(qBuyed + qFree);
-      //console.log("dataLocalUser: ", dataLocalUser);
+      console.log("dataLocalUser: ", dataLocalUser);
     }
   }, [dataLocalUser]);
 
